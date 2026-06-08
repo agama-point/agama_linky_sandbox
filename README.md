@@ -10,7 +10,7 @@
 
 ![Bitcoin](https://img.shields.io/badge/Bitcoin-F7931A?logo=bitcoin&logoColor=white)
 
-This directory is a local test and learning sandbox for experimenting with the
+This repository is a local test and learning sandbox for experimenting with the
 [Linky project](https://linky.fit), key derivation, local tooling, and helper scripts.
 
 It is not production infrastructure, not a secure wallet environment, and not a
