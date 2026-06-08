@@ -1,7 +1,17 @@
 # Agama Linky Sandbox
 
+![MIT](https://img.shields.io/badge/license-MIT-green)
+![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)
+
+![Nostr](https://img.shields.io/badge/Nostr-7C3AED)
+![Cashu](https://img.shields.io/badge/Cashu-F59E0B)
+![Evolu](https://img.shields.io/badge/Evolu-2563EB)
+
+![Bitcoin](https://img.shields.io/badge/Bitcoin-F7931A?logo=bitcoin&logoColor=white)
+
 This directory is a local test and learning sandbox for experimenting with the
-Linky project, key derivation, local tooling, and helper scripts.
+[Linky project](https://linky.fit), key derivation, local tooling, and helper scripts.
 
 It is not production infrastructure, not a secure wallet environment, and not a
 recommended model for handling real secrets.
@@ -20,6 +30,13 @@ Do not use this directory for real funds, real accounts, or real identities.
 Do not commit `.env`, `linky_keys.txt`, or any generated key export. Do not paste
 those files into chat systems, issue trackers, logs, screenshots, or cloud sync
 folders.
+
+## Links
+
+- Website: [linky.fit](https://linky.fit)
+- App: [app.linky.fit](https://app.linky.fit)
+- GitHub: [hynek-jina/linky](https://github.com/hynek-jina/linky)
+- Latest Android APK: [linky.apk](https://github.com/hynek-jina/linky/releases/latest/download/linky.apk)
 
 ## You Must Know What You Are Doing
 
