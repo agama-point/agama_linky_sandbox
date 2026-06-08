@@ -51,14 +51,6 @@ only.
 - `linky_keys.txt` is the generated export and contains secret material.
 - `linky-main/` is the Linky application checkout/workspace.
 
-## Planned Python Test Fragments
-
-These are planned small Python-oriented experiments, not production clients:
-
-- [agama-point/py_nostr](https://github.com/agama-point/py_nostr) - Nostr key, event, relay, and message-flow experiments.
-- [octopusengine/py_evolu](https://github.com/octopusengine/py_evolu) - Evolu owner/key/sync-model exploration and local data inspection.
-- [agama-point/py_cashu](https://github.com/agama-point/py_cashu) - Cashu mint, token, deterministic seed, and wallet-flow experiments.
-
 ## Intended Use
 
 This sandbox is for local education and debugging only:
@@ -70,3 +62,23 @@ This sandbox is for local education and debugging only:
 
 For real systems, use proper secret storage, minimize key exposure, avoid
 terminal/log dumps, and follow the security model of the production platform.
+
+---
+
+
+## Planned Python Test Fragments
+
+These are planned small Python-oriented experiments, not production clients:
+
+- [agama-point/py_nostr](https://github.com/agama-point/py_nostr) - Nostr key, event, relay, and message-flow experiments.
+- [octopusengine/py_evolu](https://github.com/octopusengine/py_evolu) - Evolu owner/key/sync-model exploration and local data inspection.
+- [agama-point/py_cashu](https://github.com/agama-point/py_cashu) - Cashu mint, token, deterministic seed, and wallet-flow experiments.
+
+
+## Images
+
+![Cashu sandbox](img/ag_cashu02.png)
+
+![Evolu sandbox](img/ag_evolu02.png)
+
+![Nostr sandbox](img/ag_nostr02.png)
