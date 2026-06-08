@@ -1,0 +1,3 @@
+python-dotenv>=1.0.1
+
+# Install Linky's TypeScript/Bun dependencies from the linked Linky workspace.

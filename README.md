@@ -18,7 +18,7 @@ recommended model for handling real secrets.
 
 ## Warning
 
-The files in this directory may contain generated test seeds, derived private
+The files in this repository may contain generated test seeds, derived private
 keys, Cashu wallet material, Evolu owner mnemonics, Nostr `nsec` values, and
 other sensitive data.
 
@@ -26,7 +26,7 @@ This is deliberately a verbose educational setup. It is useful for learning how
 Linky derives keys, but this is absolutely not how production keys should be
 handled.
 
-Do not use this directory for real funds, real accounts, or real identities.
+Do not use this sandbox for real funds, real accounts, or real identities.
 Do not commit `.env`, `linky_keys.txt`, or any generated key export. Do not paste
 those files into chat systems, issue trackers, logs, screenshots, or cloud sync
 folders.
@@ -63,7 +63,9 @@ only.
 
 ## Files
 
+- `.env.example` is a safe empty template for local test seed configuration.
 - `.env` may contain `LINKY_MASTER_MNEMO`, a test-only 20-word SLIP-39 share.
+- `requirements.txt` records Python runtime requirements, including `.env` loading via `python-dotenv`.
 - `linky_keys.py` derives Linky-related keys from that test seed.
 - `linky_keys.txt` is the generated export and contains secret material.
 - `linky-main/` is the Linky application checkout/workspace.
