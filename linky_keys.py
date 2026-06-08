@@ -13,13 +13,19 @@ from dotenv import dotenv_values
 
 MASTER_ENV_KEY = "LINKY_MASTER_MNEMO"
 DEFAULT_OWNER_MAX_INDEX = 3
+DATA_ROOT = Path(r"D:\data_codex")
+TMP_DIR = DATA_ROOT / ".tmp"
+NPM_CACHE_DIR = DATA_ROOT / ".cache" / "npm"
+PIP_CACHE_DIR = DATA_ROOT / ".cache" / "pip"
+
+
 def ask_print_secrets_to_terminal() -> bool:
-    print("Takto se s klici nepracuje. Toto je pouze sandboxovy a vyukovy helper.")
-    print("Vystup muze obsahovat SLIP-39 seed, Nostr nsec, Cashu seed material a Evolu owner mnemonics.")
-    print("Ve vychozim rezimu vypisu jen to, co delam; vsechny tajnosti zustanou pouze v exportnim souboru.")
-    print('OPRAVDU CHCETE VYPISOVAT VSECHNY TAJNOSTI DO TERMINALU? Napiste presne "yes" malymi pismeny.')
+    print("This is not how production keys should be handled. This helper is sandbox-only and educational.")
+    print("The output can contain a SLIP-39 seed, Nostr nsec, Cashu seed material, and Evolu owner mnemonics.")
+    print("By default, only progress is printed; secret material stays in the export file.")
+    print('DO YOU REALLY WANT TO PRINT ALL SECRETS TO THE TERMINAL? Type exactly "yes" in lowercase.')
     try:
-        answer = input('Pro bezpecnejsi vychozi chovani jen stisknete Enter: ')
+        answer = input("For the safer default behavior, just press Enter: ")
     except EOFError:
         return False
     return answer.strip() == "yes"
@@ -149,6 +155,13 @@ def find_bun(repo_dir: Path) -> Path:
     return Path("bun")
 
 
+def default_repo_dir(script_dir: Path) -> Path:
+    local_checkout = script_dir / "linky-main"
+    if local_checkout.exists():
+        return local_checkout
+    return script_dir.parent / "linky-main"
+
+
 def build_env(base_env: Dict[str, str], repo_dir: Path, payload: Dict[str, object]) -> Dict[str, str]:
     env = dict(base_env)
     node_dir = repo_dir / ".tools" / "node" / "node-v22.12.0-win-x64"
@@ -165,10 +178,11 @@ def build_env(base_env: Dict[str, str], repo_dir: Path, payload: Dict[str, objec
         path_parts.append(existing_path)
     env["PATH"] = os.pathsep.join(path_parts)
     env["Path"] = env["PATH"]
-    env["TEMP"] = r"D:\data_codex\.tmp"
-    env["TMP"] = r"D:\data_codex\.tmp"
+    env["TEMP"] = str(TMP_DIR)
+    env["TMP"] = str(TMP_DIR)
     env["BUN_INSTALL_CACHE_DIR"] = str(repo_dir / ".tools" / "bun" / "install-cache")
-    env["npm_config_cache"] = r"D:\data_codex\.cache\npm"
+    env["npm_config_cache"] = str(NPM_CACHE_DIR)
+    env["PIP_CACHE_DIR"] = str(PIP_CACHE_DIR)
     env["LINKY_KEYS_INPUT_JSON"] = json.dumps(payload, ensure_ascii=False)
     return env
 
@@ -259,7 +273,7 @@ def format_output(data: Dict[str, object], env_path: Path, repo_dir: Path) -> st
 
 def main(argv: List[str]) -> int:
     script_dir = Path(__file__).resolve().parent
-    default_repo = script_dir / "linky-main"
+    default_repo = default_repo_dir(script_dir)
     default_env = script_dir / ".env"
     default_out = script_dir / "linky_keys.txt"
 
